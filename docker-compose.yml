@@ -1,0 +1,30 @@
+version: "3.7"
+
+services:
+  superset:
+    image: apache/superset
+    container_name: prefixed_superset
+    expose:
+      - 8088 # for nginx
+    ports:
+      - "8080:8088" # for direct access
+    command:
+      - bash
+      - -c
+      - "superset fab create-admin --username admin --firstname Superset --lastname Admin --email admin@superset.com --password admin 
+        && superset db upgrade
+        && superset init
+        && /usr/bin/run-server.sh"
+  nginx:
+    image: nginx:alpine
+    container_name: prefixed_superset_nginx
+    environment:
+      - "SUPERSET_CONTEXT_PATH=${SUPERSET_CONTEXT_PATH:-awesome}"
+    command: /bin/sh -c "envsubst '$${SUPERSET_CONTEXT_PATH}' < /etc/nginx/conf.d/superset.conf.template > /etc/nginx/conf.d/default.conf && cat /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+    volumes:
+      - "./nginx/conf.d/superset.conf.template:/etc/nginx/conf.d/superset.conf.template"
+    ports:
+      - "80:80"
+    depends_on:
+      - superset
+

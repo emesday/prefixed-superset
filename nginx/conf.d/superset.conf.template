@@ -1,0 +1,43 @@
+upstream superset-nginx {
+	server superset:8088;
+}
+
+server {
+  listen 80;
+
+  location ^~ /${SUPERSET_CONTEXT_PATH}/ {
+    rewrite ^/${SUPERSET_CONTEXT_PATH}/(.*)$ /$1?$args break;
+    proxy_pass http://superset-nginx;
+
+    sub_filter_types *;
+    sub_filter_once off;
+    sub_filter '/api/v1/' '/${SUPERSET_CONTEXT_PATH}/api/v1/';
+    sub_filter 'api/v1/' '${SUPERSET_CONTEXT_PATH}/api/v1/';
+    sub_filter '/dashboard/' '/${SUPERSET_CONTEXT_PATH}/dashboard/';
+    sub_filter '/chart/' '/${SUPERSET_CONTEXT_PATH}/chart/';
+    sub_filter '/superset/' '/${SUPERSET_CONTEXT_PATH}/superset/';
+    sub_filter '/tabstateview/' '/${SUPERSET_CONTEXT_PATH}/tabstateview/';
+    sub_filter '/savedqueryview/' '/${SUPERSET_CONTEXT_PATH}/savedqueryview/';
+    sub_filter '/databaseview/' '/${SUPERSET_CONTEXT_PATH}/databaseview/';
+    sub_filter '/tablemodelview/' '/${SUPERSET_CONTEXT_PATH}/tablemodelview/';
+    sub_filter '/static/assets/' '/${SUPERSET_CONTEXT_PATH}/static/assets/';
+    sub_filter '/static/appbuilder/' '/${SUPERSET_CONTEXT_PATH}/static/appbuilder/';
+    sub_filter '/users/' '/${SUPERSET_CONTEXT_PATH}/users/';
+    sub_filter '/roles/' '/${SUPERSET_CONTEXT_PATH}/roles/';
+    sub_filter '/rowlevelsecurityfiltersmodelview/' '/${SUPERSET_CONTEXT_PATH}/rowlevelsecurityfiltersmodelview/';
+    sub_filter '/logmodelview/' '/${SUPERSET_CONTEXT_PATH}/logmodelview/';
+    sub_filter '/annotationlayermodelview/' '/${SUPERSET_CONTEXT_PATH}/annotationlayermodelview/';
+    sub_filter '/csstemplatemodelview/' '/${SUPERSET_CONTEXT_PATH}/csstemplatemodelview/';
+    sub_filter '/logout/' '/${SUPERSET_CONTEXT_PATH}/logout/';
+    sub_filter '/explore/' '/${SUPERSET_CONTEXT_PATH}/explore/';
+    sub_filter '/tableschemaview/' '/${SUPERSET_CONTEXT_PATH}/tableschemaview/';
+    sub_filter 'href="/back"' 'href="/${SUPERSET_CONTEXT_PATH}/back"'; # no tailing slash
+
+    proxy_redirect     'http://$host/' '/${SUPERSET_CONTEXT_PATH}/';
+    proxy_set_header   Accept-Encoding "";
+    proxy_set_header   Host $host;
+    proxy_set_header   X-Real-IP $remote_addr;
+    proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;          
+  }
+}
+
