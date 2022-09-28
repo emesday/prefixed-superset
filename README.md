@@ -21,7 +21,7 @@ $ SUPERSET_CONTEXT_PATH=mysuperset docker-compose up -d
 ## Load examples
 
 ```
-$ docker exec -it prefixed-superset superset load_examples
+$ docker exec -it prefixed_superset superset load_examples
 ```
 
 ## Accesss
