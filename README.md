@@ -1,6 +1,6 @@
 # prefixed-superset
 
-Change the root context path to your own.
+Adds context path (url prefix, sub path) of Apache Superset by NGINX reverse proxy and sub_filter.
 
 # How to use
 
