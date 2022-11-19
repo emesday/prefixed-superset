@@ -28,6 +28,7 @@ server {
     sub_filter '/logmodelview/' '/${SUPERSET_CONTEXT_PATH}/logmodelview/';
     sub_filter '/annotationlayermodelview/' '/${SUPERSET_CONTEXT_PATH}/annotationlayermodelview/';
     sub_filter '/csstemplatemodelview/' '/${SUPERSET_CONTEXT_PATH}/csstemplatemodelview/';
+    sub_filter '/csstemplateasyncmodelview/' '/${SUPERSET_CONTEXT_PATH}/csstemplateasyncmodelview/';
     sub_filter '/logout/' '/${SUPERSET_CONTEXT_PATH}/logout/';
     sub_filter '/explore/' '/${SUPERSET_CONTEXT_PATH}/explore/';
     sub_filter '/tableschemaview/' '/${SUPERSET_CONTEXT_PATH}/tableschemaview/';
