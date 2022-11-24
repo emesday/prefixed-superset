@@ -23,6 +23,7 @@ server {
     sub_filter '/static/assets/' '/${SUPERSET_CONTEXT_PATH}/static/assets/';
     sub_filter '/static/appbuilder/' '/${SUPERSET_CONTEXT_PATH}/static/appbuilder/';
     sub_filter '/users/' '/${SUPERSET_CONTEXT_PATH}/users/';
+    sub_filter '/lang/' '/${SUPERSET_CONTEXT_PATH}/lang/';
     sub_filter '/roles/' '/${SUPERSET_CONTEXT_PATH}/roles/';
     sub_filter '/rowlevelsecurityfiltersmodelview/' '/${SUPERSET_CONTEXT_PATH}/rowlevelsecurityfiltersmodelview/';
     sub_filter '/logmodelview/' '/${SUPERSET_CONTEXT_PATH}/logmodelview/';
@@ -30,6 +31,7 @@ server {
     sub_filter '/csstemplatemodelview/' '/${SUPERSET_CONTEXT_PATH}/csstemplatemodelview/';
     sub_filter '/csstemplateasyncmodelview/' '/${SUPERSET_CONTEXT_PATH}/csstemplateasyncmodelview/';
     sub_filter '/logout/' '/${SUPERSET_CONTEXT_PATH}/logout/';
+    sub_filter '/login/' '/${SUPERSET_CONTEXT_PATH}/login/';
     sub_filter '/explore/' '/${SUPERSET_CONTEXT_PATH}/explore/';
     sub_filter '/tableschemaview/' '/${SUPERSET_CONTEXT_PATH}/tableschemaview/';
     sub_filter 'href="/back"' 'href="/${SUPERSET_CONTEXT_PATH}/back"'; # no tailing slash
