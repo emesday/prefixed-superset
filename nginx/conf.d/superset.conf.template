@@ -14,10 +14,12 @@ server {
     sub_filter '/api/v1/' '/${SUPERSET_CONTEXT_PATH}/api/v1/';
     sub_filter 'api/v1/' '${SUPERSET_CONTEXT_PATH}/api/v1/';
     sub_filter '/dashboard/' '/${SUPERSET_CONTEXT_PATH}/dashboard/';
+    sub_filter '/dashboardasync/ '/${SUPERSET_CONTEXT_PATH}/dashboardasync/';
     sub_filter '/chart/' '/${SUPERSET_CONTEXT_PATH}/chart/';
     sub_filter '/superset/' '/${SUPERSET_CONTEXT_PATH}/superset/';
     sub_filter '/tabstateview/' '/${SUPERSET_CONTEXT_PATH}/tabstateview/';
     sub_filter '/savedqueryview/' '/${SUPERSET_CONTEXT_PATH}/savedqueryview/';
+    sub_filter '/savedqueryviewapi/' '/${SUPERSET_CONTEXT_PATH}/savedqueryviewapi/';
     sub_filter '/databaseview/' '/${SUPERSET_CONTEXT_PATH}/databaseview/';
     sub_filter '/tablemodelview/' '/${SUPERSET_CONTEXT_PATH}/tablemodelview/';
     sub_filter '/static/assets/' '/${SUPERSET_CONTEXT_PATH}/static/assets/';
@@ -34,6 +36,11 @@ server {
     sub_filter '/login' '/${SUPERSET_CONTEXT_PATH}/login';
     sub_filter '/explore/' '/${SUPERSET_CONTEXT_PATH}/explore/';
     sub_filter '/tableschemaview/' '/${SUPERSET_CONTEXT_PATH}/tableschemaview/';
+    sub_filter '/csvtodatabaseview/ '/${SUPERSET_CONTEXT_PATH}/csvtodatabaseview/';
+    sub_filter '/columnartodatabaseview/ '/${SUPERSET_CONTEXT_PATH}/columnartodatabaseview/';
+    sub_filter '/exceltodatabaseview/ '/${SUPERSET_CONTEXT_PATH}/exceltodatabaseview/';
+    sub_filter '/annotationmodelview/ '/${SUPERSET_CONTEXT_PATH}/annotationmodelview/';
+    sub_filter '/alert/ '/${SUPERSET_CONTEXT_PATH}/alert/';
     sub_filter 'href="/back"' 'href="/${SUPERSET_CONTEXT_PATH}/back"'; # no tailing slash
 
     proxy_redirect     'http://$host/' '/${SUPERSET_CONTEXT_PATH}/';
