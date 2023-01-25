@@ -32,7 +32,7 @@ http://localhost:8080
 
 ### 2. With context path
 
-http://localhost/awesome or http://localhost/${SUPERSET_CONTEXT_PATH}
+http://localhost/awesome/superset/welcome/ or http://localhost/${SUPERSET_CONTEXT_PATH}/superset/welcome/
 
 
 ## Stop the superset and nginx
